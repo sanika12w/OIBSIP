@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 
 const ingredientSchema = new mongoose.Schema(
@@ -32,9 +31,31 @@ const ingredientSchema = new mongoose.Schema(
       min: 0,
     },
 
+    threshold: {
+      type: Number,
+      default: 20,
+      min: 0,
+    },
+
+    unit: {
+      type: String,
+      default: "units",
+    },
+
+    image: {
+      type: String,
+      default: "",
+    },
+
     isAvailable: {
       type: Boolean,
       default: true,
+    },
+
+    // Tracks whether low-stock notification has been dispatched to avoid duplicate alerts
+    lowStockAlertSent: {
+      type: Boolean,
+      default: false,
     },
   },
   {
